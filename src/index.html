@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lectrum: Task Manager</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <section class="scheduler">
+        <main>
+            <header>
+                <h1>Планировщик задач</h1>
+            </header>
+            <section>
+                <form class="createTaskForm">
+                    <input
+                        class="createTask"
+                        maxLength = 50
+                        placeholder = 'Описaние моей новой задачи'
+                        type = 'text'
+                        name = "task"
+                    />
+                    <button type="submit">Добавить задачу</button>
+                </form>
+                <div class="overlay">
+                    <ul class="tasks">
+                    </ul>
+                </div>
+            </section>
+            <footer>
+                <button class="checkbox selectAll"></button>
+                <span class="completeAllTasks">Все задачи выполнены</span>
+            </footer>
+        </main>
+    </section>
+    <script src="./js/module.js"></script>
+</body>
+</html>

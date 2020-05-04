@@ -1,0 +1,267 @@
+@charset "UTF-8";
+/* HEX */
+/* RGBA */
+* {
+  box-sizing: border-box;
+  outline: 0; }
+
+body {
+  background-color: #3b8ef3;
+  font-family: roboto mono, roboto, system-ui;
+  /* Зачаровать шрифты */
+  font-smoothing: antialiased;
+  font-variant-ligatures: none;
+  /**
+   * Фикс для мобильного сафари, чтобы при поворотах он не склеивал и не терял контент.
+   * Префиксы установлены вручную, так как на момент 13.03.2018
+   * autoprefixer этого не делал автоматически.
+   */
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  min-height: 100vh; }
+  body section {
+    width: 100%; }
+
+.scheduler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 4%;
+  user-select: none;
+  min-height: 100vh; }
+  .scheduler main {
+    width: 100%;
+    max-width: 950px;
+    height: 100%;
+    padding: 50px 85px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.2); }
+    .scheduler main header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 45px; }
+      .scheduler main header h1 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #313b3d; }
+      .scheduler main header input {
+        width: 215px;
+        height: 42px !important;
+        background-image: url("/images/search-icon.svg");
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% 50%; }
+    .scheduler main input {
+      -webkit-appearance: none;
+      /* ← Этот хак нужен сафари для работы (проблема со свойством height)... */
+      height: 42px;
+      padding: 0 14px;
+      caret-color: #3b8ef3;
+      border-radius: 5px;
+      border: 1px solid #cccccc;
+      outline: none;
+      transition: border-color 0.1s ease-in-out;
+      background-color: #fff;
+      font-size: 20px;
+      text-overflow: ellipsis; }
+      .scheduler main input::placeholder {
+        font-size: 20px;
+        transition: color 0.1s ease-in-out;
+        color: #cccccc; }
+      .scheduler main input:focus {
+        border-color: #3b8ef3; }
+        .scheduler main input:focus::placeholder {
+          color: transparent; }
+    .scheduler main section {
+      margin-bottom: 31px; }
+      .scheduler main section form {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 13px; }
+        .scheduler main section form input[type='text'] {
+          width: 100%;
+          margin-right: 22px; }
+        .scheduler main section form button {
+          min-width: 215px;
+          height: 42px;
+          border-radius: 5px;
+          background-color: #3b8ef3;
+          font-size: 18px;
+          padding-left: 25px;
+          color: #fff;
+          border: 0;
+          cursor: pointer;
+          background-image: url("/images/plus-icon.svg");
+          background-repeat: no-repeat;
+          background-size: 18px 18px;
+          background-position: 6% 50%;
+          transition: background-color 0.3s ease-in-out; }
+          .scheduler main section form button:hover {
+            background-color: #136BD6; }
+      .scheduler main section ul {
+        min-height: 370px;
+        max-height: 370px;
+        overflow: scroll;
+        padding-left: 0; }
+        .scheduler main section ul::-webkit-scrollbar {
+          display: none; }
+    .scheduler main footer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; }
+      .scheduler main footer .checkbox {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-image: url("/images/checkbox.svg");
+        background-color: transparent;
+        background-size: cover;
+        border: none; }
+        .scheduler main footer .checkbox.selected {
+          background-image: url("/images/checkboxSelected.svg"); }
+        .scheduler main footer .checkbox:hover {
+          cursor: pointer; }
+      .scheduler main footer div {
+        margin: 0 20px;
+        cursor: pointer; }
+      .scheduler main footer .completeAllTasks {
+        font-size: 20px;
+        color: #363636; }
+  @media (max-width: 840px) {
+    .scheduler {
+      padding: 7px; }
+      .scheduler main {
+        padding: 7px; }
+        .scheduler main header {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+          .scheduler main header h1 {
+            margin-bottom: 15px;
+            font-size: 35px;
+            text-align: center; }
+          .scheduler main header input {
+            width: 100%; }
+        .scheduler main section {
+          margin-bottom: 31px; }
+          .scheduler main section form {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 13px; }
+            .scheduler main section form input[type='text'] {
+              width: 100%;
+              margin-bottom: 12px; }
+            .scheduler main section form button {
+              margin-bottom: 12px; }
+        .scheduler main footer {
+          margin-bottom: 14px; }
+          .scheduler main footer .completeAllTasks {
+            font-size: 18px; } }
+  @media (max-width: 380px) {
+    .scheduler main header h1 {
+      font-size: 28px; } }
+
+.tasks li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 61px;
+  margin-bottom: 13px;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  font-weight: 400; }
+  .tasks li svg {
+    cursor: pointer; }
+  .tasks li .content {
+    display: flex;
+    align-items: center;
+    width: 83%; }
+    .tasks li .content .checkbox {
+      display: inline-block;
+      width: 19px;
+      height: 19px;
+      margin-right: 20px;
+      background-image: url("/images/checkbox.svg");
+      background-color: transparent;
+      background-size: cover;
+      border: none; }
+      .tasks li .content .checkbox.selected {
+        background-image: url("/images/checkboxSelected.svg"); }
+      .tasks li .content .checkbox:hover {
+        cursor: pointer; }
+    .tasks li .content .toggleTaskCompletedState {
+      margin-right: 20px; }
+    .tasks li .content span {
+      display: flex;
+      align-items: center;
+      margin-right: 1.9rem; }
+    .tasks li .content input[type='text'] {
+      width: 100%;
+      border-color: transparent; }
+      .tasks li .content input[type='text']:not([disabled]) {
+        border-color: #3b8ef3; }
+  .tasks li .actions .toggleTaskFavoriteState,
+  .tasks li .actions .updateTaskMessageOnClick {
+    margin-right: 20px; }
+  .tasks li .actions .star {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-right: 20px;
+    background-image: url("/images/star.svg");
+    background-color: transparent;
+    background-size: cover;
+    border: none; }
+    .tasks li .actions .star:hover {
+      cursor: pointer;
+      background-image: url("/images/starHover.svg"); }
+    .tasks li .actions .star.selected {
+      background-image: url("/images/starSelected.svg"); }
+      .tasks li .actions .star.selected:hover {
+        background-image: url("/images/starSelected.svg"); }
+  .tasks li .actions .edit {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-right: 20px;
+    background-image: url("/images/edit.svg");
+    background-color: transparent;
+    background-size: cover;
+    border: none; }
+    .tasks li .actions .edit:hover, .tasks li .actions .edit.selected {
+      cursor: pointer;
+      background-image: url("/images/editHover.svg"); }
+  .tasks li .actions .remove {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-image: url("/images/remove.svg");
+    background-color: transparent;
+    background-size: cover;
+    border: none; }
+    .tasks li .actions .remove:hover {
+      cursor: pointer;
+      background-image: url("/images/removeHover.svg"); }
+  @media (max-width: 740px) {
+    .tasks li {
+      padding: 10px 5px;
+      height: auto; }
+      .tasks li .content {
+        width: 95%; }
+      .tasks li .actions {
+        margin-bottom: 7px;
+        align-self: flex-end; } }
+
+.tasks li.completed {
+  background-color: #e4e4e4;
+  color: #656565; }
+  .tasks li.completed .content input[type='text'] {
+    background-color: #e4e4e4; }

@@ -1,0 +1,14 @@
+{
+  "name": "js-workshop-task-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Lectrum/js-workshop-task-manager.git",
+  "author": "Andrey Prisniak <aprisniak@lectrum.io>",
+  "license": "MIT",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
