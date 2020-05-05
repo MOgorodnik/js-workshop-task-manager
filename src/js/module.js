@@ -44,7 +44,7 @@
         const editDom = taskDom.querySelector('.edit');
 
         editDom.onclick = () => {
-            const taskInputDom = document.querySelector('.taskInput');
+            const taskInputDom = taskDom.querySelector('.taskInput');
             const isDisabled = taskInputDom.getAttribute('disabled') === null;
 
             if (isDisabled) {
