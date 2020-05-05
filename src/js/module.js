@@ -26,6 +26,12 @@
         </div>
     `;
 
+    const addRemoveHandler = (taskDom) => {
+        const removeDom = document.querySelector('.remove');
+
+        removeDom.onclick = () => taskDom.remove();
+    }
+
     const addTask = (task) => {
         // взять ul элемент
         const tasksDom = document.querySelector('.tasks');
@@ -34,5 +40,7 @@
         taskDom.innerHTML = getUpdatedTemplate(task);
         
         tasksDom.prepend(taskDom);
+
+        addRemoveHandler(taskDom);
     }
 }
