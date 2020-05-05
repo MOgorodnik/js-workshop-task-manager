@@ -27,21 +27,21 @@
     `;
 
     const addRemoveHandler = (taskDom) => {
-        const removeDom = document.querySelector('.remove');
+        const removeDom = taskDom.querySelector('.remove');
 
         removeDom.onclick = () => taskDom.remove();
     }
 
-    const addFavoriteHandler = () =>  {
-        const starDom = document.querySelector('.star');
+    const addFavoriteHandler = (taskDom) =>  {
+        const starDom = taskDom.querySelector('.star');
 
         starDom.onclick = () => {
             starDom.classList.toggle('selected');
         };
     }
 
-    const addEditHandler = () => {
-        const editDom = document.querySelector('.edit');
+    const addEditHandler = (taskDom) => {
+        const editDom = taskDom.querySelector('.edit');
 
         editDom.onclick = () => {
             const taskInputDom = document.querySelector('.taskInput');
@@ -65,7 +65,7 @@
         tasksDom.prepend(taskDom);
 
         addRemoveHandler(taskDom);
-        addFavoriteHandler();
-        addEditHandler();
+        addFavoriteHandler(taskDom);
+        addEditHandler(taskDom);
     }
 }
