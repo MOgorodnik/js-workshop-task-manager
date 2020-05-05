@@ -32,6 +32,29 @@
         removeDom.onclick = () => taskDom.remove();
     }
 
+    const addFavoriteHandler = () =>  {
+        const starDom = document.querySelector('.star');
+
+        starDom.onclick = () => {
+            starDom.classList.toggle('selected');
+        };
+    }
+
+    const addEditHandler = () => {
+        const editDom = document.querySelector('.edit');
+
+        editDom.onclick = () => {
+            const taskInputDom = document.querySelector('.taskInput');
+            const isDisabled = taskInputDom.getAttribute('disabled') === null;
+
+            if (isDisabled) {
+                taskInputDom.setAttribute('disabled', true);
+            } else {
+                taskInputDom.removeAttribute('disabled');
+            }
+        }
+    }
+
     const addTask = (task) => {
         // взять ul элемент
         const tasksDom = document.querySelector('.tasks');
@@ -42,5 +65,7 @@
         tasksDom.prepend(taskDom);
 
         addRemoveHandler(taskDom);
+        addFavoriteHandler();
+        addEditHandler();
     }
 }
